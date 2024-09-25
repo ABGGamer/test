@@ -30,8 +30,6 @@ end
 
 
 local messages = {}
-local atob = Base64.atob
-local btoa = Base64.btoa
 
 local function notExists(whichArray, itemName)
 	if (table.find(whichArray, itemName)) then
