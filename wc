@@ -26,12 +26,7 @@ function from_base64(data)
 		for i=1,8 do c=c+(x:sub(i,i)=='1' and 2^(8-i) or 0) end
 		return string.char(c)
 	end))
-end 
-
-return {
-	atob = from_base64,
-	btoa = to_base64
-}
+end
 
 
 local messages = {}
@@ -55,10 +50,10 @@ local ws = function (dict)
 		print(msg)
 	end
 	local server = game:GetService('HttpService')
-	local id = server:GetAsync("http://localhost:6969/api/connect/"..btoa(dict.url))
+	local id = server:GetAsync("http://localhost:6969/api/connect/"..to_base64(dict.url))
 	local function sendMessage(msg)
 		wait(1)
-		server:GetAsync("http://localhost:6969/api/send/"..id.."/"..btoa(msg))
+		server:GetAsync("http://localhost:6969/api/send/"..id.."/"..to_base64(msg))
 	end
 	
 	local loop = coroutine.create(function()
