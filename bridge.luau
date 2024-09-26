@@ -208,6 +208,8 @@ end
 
 bridge.send = function(self, action, ...)
     if not action then
+        print(self)
+        print(action)
         return
     end
 
