@@ -211,7 +211,7 @@ bridge.send = function(self, action, ...)
         return
     end
 
-    local session = self.sessions[action] or 0
+    local session = self.sessions[action] or {}
     self.sessions[action] = session + 1
 
     table.insert(self.queued_datas, { action, session, { ... } })
